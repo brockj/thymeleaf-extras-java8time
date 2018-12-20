@@ -61,10 +61,21 @@ public class TemporalsFormattingTest {
     @Test
     public void testFormatStandardPattern() {
         Temporal time = LocalDateTime.of(2015, 12, 31, 23, 59);
-        assertEquals("31/12/2015, 23:59", temporals.format(time, "SHORT", Locale.ENGLISH));
-        assertEquals("31 Dec 2015, 23:59:00", temporals.format(time, "MEDIUM", Locale.ENGLISH));
-        assertEquals("31 December 2015 at 23:59:00 Z", temporals.format(time, "LONG", Locale.ENGLISH));
-        assertEquals("Thursday, 31 December 2015 at 23:59:00 Z", temporals.format(time, "FULL", Locale.ENGLISH));
+        assertEquals("31/12/2015", temporals.format(time, "SHORT_DATE", Locale.UK));
+        assertEquals("31 Dec 2015", temporals.format(time, "MEDIUM_DATE", Locale.UK));
+        assertEquals("31 December 2015", temporals.format(time, "LONG_DATE", Locale.UK));
+        assertEquals("31/12/2015, 23:59", temporals.format(time, "SHORT", Locale.UK));
+        assertEquals("31 Dec 2015, 23:59:00", temporals.format(time, "MEDIUM", Locale.UK));
+        assertEquals("31 December 2015 at 23:59:00 Z", temporals.format(time, "LONG", Locale.UK));
+        assertEquals("Thursday, 31 December 2015 at 23:59:00 Z", temporals.format(time, "FULL", Locale.UK));
+    }
+
+    @Test
+    public void testFormatStandardDatePattern() {
+        Temporal date = LocalDate.of(2015, 12, 31);
+        assertEquals("31/12/2015", temporals.format(date, "SHORT_DATE", Locale.UK));
+        assertEquals("31 Dec 2015", temporals.format(date, "MEDIUM_DATE", Locale.UK));
+        assertEquals("31 December 2015", temporals.format(date, "LONG_DATE", Locale.UK));
     }
 
     @Test
